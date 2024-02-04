@@ -1,0 +1,30 @@
+{
+    "manifest_version": 3,
+    "name": "Japanese Subtitles Learning Tool",
+    "description": "Base Level Extension",
+    "version": "1.0",
+    "background": {
+        "service_worker": "background.js"
+    },    
+    "action": {
+        "default_icon": "img/icon.png",
+        "default_title": "Click to open panel"
+    },
+    "permissions": [
+        "sidePanel",
+        "tabs",
+        "scripting",
+        "activeTab"
+    ],
+    "side_panel": {
+        "default_path": "index.html"
+    },
+    "content_scripts": [
+        {
+          "matches": ["https://*.youtube.com/*"],
+          "match_origin_as_fallback": true,
+          "js": ["contentScript.js"]
+        }
+    ],
+    "host_permissions": ["<all_urls>"]
+}
